@@ -1,12 +1,9 @@
-#--------------Файлы в операционной системе--------------
+# --------------Файлы в операционной системе--------------
 
 import os
-from os import getcwd
 import time
 
-
 directory = '.'
-
 
 for root, dirs, files in os.walk(directory):
     for file in files:
@@ -16,4 +13,4 @@ for root, dirs, files in os.walk(directory):
         filesize = os.path.getsize(filepath)
         parent_dir = os.path.dirname(filepath)
         print(f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения:'
-            f' {formatted_time}, Родительская директория: {parent_dir}')
+              f' {formatted_time}, Родительская директория: {parent_dir}')
