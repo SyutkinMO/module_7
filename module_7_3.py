@@ -24,7 +24,7 @@ class WordsFinder():
         all_words = {}
         for i in self.file_names:
             with open(i, encoding='utf-8') as file:
-                string_ = ''            # text = file.read().lower() - как вариант
+                string_ = ''  # text = file.read().lower() - как вариант
                 for j in file:
                     string_ += j.lower()
                 import re
@@ -33,7 +33,7 @@ class WordsFinder():
                 all_words[i] = string_.split(' ')  # разбаить строку по пробелам
         return all_words
 
-    def find(self, word):
+    def find(self, word) -> dict:  # пояснение что вернет функция (словарь)
         """
         метод, где word - искомое слово. Возвращает словарь, где ключ - название файла,
         значение - позиция первого такого слова в списке слов этого файла.
@@ -46,7 +46,7 @@ class WordsFinder():
                 dict_find[name] = words.index(low_word) + 1
         return dict_find
 
-    def count(self, word):
+    def count(self, word) -> dict:
 
         """
         count(self, word) - метод, где word - искомое слово. Возвращает словарь, где ключ - название файла,
@@ -54,10 +54,9 @@ class WordsFinder():
         """
 
         dict_count = {}
-        low_word = word.lower()
         for name, words in self.get_all_words().items():
-            if low_word in words:
-                dict_count[name] = words.count(low_word)
+            if word.lower() in words:
+                dict_count[name] = words.count(word.lower())  # упростили указав нижний регистр без переменной
         return dict_count
 
 
